@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="css/mystyle.css"
+  rel="stylesheet" type="text/css" />
+<title>Calculadora</title>
+</h:head>
+<h:body>
+  <h1>Calculadora</h1>
+  <h:form>
+    <h:panelGrid columns="3">
+      <h:outputLabel value="Primer número"/>
+      <h:inputText id="firstNumber"
+          value="#{calculatorBean.firstNumber}"
+          required="true"/>
+      <h:message for="firstNumber"/>
+             
+      <h:outputLabel value="Segundo número"/>
+      <h:inputText id="secondNumber"
+          value="#{calculatorBean.secondNumber}"
+          required="true"/>
+      <h:message for="secondNumber" />
+             
+      <h:outputLabel value="Operación"/>
+      <h:outputLabel value="#{calculatorBean.operation}"
+                            styleClass="strong"/>
+      <h:outputLabel value=""/>
+    </h:panelGrid>
+           
+    <h:commandButton value="Calcular"
+        action="#{calculatorController.doOperation}"/>
+    <h:outputText value="Resultado: #{calculatorBean.result}"/><br/>
+     
+    <p></p>  
+     
+    <h:commandLink rendered="#{calculatorController.newOperationCommandRendered}"
+        action="#{calculatorController.doNewOperation}" 
+        value="Cambiar operación"/>
+    </h:form><br/>
+     
+    <p></p>
+     
+    <h:form  rendered="#{calculatorController.selectOperationFormRendered}">
+      <h:selectOneListbox value="#{calculatorBean.operation}">
+        <f:selectItem itemValue="+" itemLabel="suma"/>
+        <f:selectItem itemValue="-" itemLabel="resta"/>
+        <f:selectItem itemValue="*" itemLabel="multiplicación"/>
+        <f:selectItem itemValue="/" itemLabel="división"/>             
+      </h:selectOneListbox><br/>
+      <h:commandButton action="#{calculatorController.doSelectOperation}"
+          value="Selecciona operación"/>
+    </h:form>
+</h:body>
+</html>
