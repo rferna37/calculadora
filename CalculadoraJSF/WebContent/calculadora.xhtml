@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link href="css/mystyle.css"
@@ -9,6 +10,17 @@
 </h:head>
 <h:body>
   <h1>Calculadora</h1>
+  <!-- 
+  	Este comentario saldrá en el HTML resultante.
+    Si no queremos que salga podemos añadir en el
+    descriptor de despliegue:
+    
+       	<context-param>
+    		<param-name>facelets.SKIP_COMMENTS</param-name>
+   			<param-value>true</param-value>
+		</context-param> 
+  -->
+  <ui:remove>Este otro no.</ui:remove>
   <h:form>
     <h:panelGrid columns="3">
       <h:outputLabel value="Primer número"/>
